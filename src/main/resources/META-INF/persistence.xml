@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+  <persistence-unit name="bionic_restaurant">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>ua.bionic.sen.db.Dish</class>
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby:CM;create=true"/>
+      <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+    </properties>
+  </persistence-unit>
+
+</persistence>
