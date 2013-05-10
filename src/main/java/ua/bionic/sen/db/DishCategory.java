@@ -1,14 +1,46 @@
 package ua.bionic.sen.db;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: dmitry
- * Date: 08.05.13
- * Time: 10:14
- * To change this template use File | Settings | File Templates.
+ *
  */
 @Entity
 public class DishCategory {
+
+  @Id
+  @GeneratedValue
+  private int id;
+
+  private List<Dish> dishes;
+
+  public DishCategory() {
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public List<Dish> getDishes() {
+    return dishes;
+  }
+
+  public void setDishes(List<Dish> dishes) {
+    this.dishes = dishes;
+  }
+
+  @Override
+  public String toString() {
+    return "DishCategory{" +
+        "id=" + id +
+        ", dishes=" + dishes +
+        '}';
+  }
 }
