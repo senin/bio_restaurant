@@ -24,6 +24,17 @@
       <artifactId>javax.persistence</artifactId>
       <version>2.0.5</version>
     </dependency>
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>eclipselink</artifactId>
+      <version>2.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derby</artifactId>
+      <version>10.9.1.0</version>
+    </dependency>
+
   </dependencies>
   <build>
     <!--<finalName>bionic3</finalName>-->
@@ -39,6 +50,7 @@
           </connectors>
         </configuration>
       </plugin>
+
     </plugins>
 
   </build>
