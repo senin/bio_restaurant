@@ -1,24 +1,25 @@
 package ua.bionic.sen.db;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 /**
  *
  */
 @Entity
+@Table(name = "users")
 public class User {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  private String email; //as login
+  private String email;
   private String password;
 
+  @ManyToMany
   private List<AccessRole> roles;
+  @OneToMany
   private List<Order> orders;
 
   public User() {

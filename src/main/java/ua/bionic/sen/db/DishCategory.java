@@ -1,8 +1,6 @@
 package ua.bionic.sen.db;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -12,10 +10,21 @@ import java.util.List;
 public class DishCategory {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  @OneToMany(mappedBy = "dishCategory")
   private List<Dish> dishes;
+
+  private String title;
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
   public DishCategory() {
   }

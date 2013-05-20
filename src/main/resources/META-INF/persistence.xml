@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
-  <persistence-unit name="bionic_restaurant">
+  <persistence-unit name="bionicRestaurant">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>ua.bionic.sen.db.Dish</class>
+    <class>ua.bionic.sen.db.AccessRole</class>
+    <class>ua.bionic.sen.db.DishCategory</class>
+    <class>ua.bionic.sen.db.Order</class>
+    <class>ua.bionic.sen.db.User</class>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby:CM;create=true"/>
-      <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby:c:\CM;create=true"/>
+      <!--<property name="eclipselink.ddl-generation.output-mode" value="database"/>-->
+      <property name="eclipselink.create-ddl-jdbc-file-name" value="createDDL_ddlGeneration.jdbc"/>
+      <property name="eclipselink.drop-ddl-jdbc-file-name" value="dropDDL_ddlGeneration.jdbc"/>
+      <property name="eclipselink.ddl-generation.output-mode" value="both"/>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
     </properties>
   </persistence-unit>
 

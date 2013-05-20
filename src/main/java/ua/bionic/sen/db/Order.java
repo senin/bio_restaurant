@@ -1,8 +1,6 @@
 package ua.bionic.sen.db;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
@@ -13,9 +11,11 @@ import java.util.List;
 public class Order {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  @OneToMany(mappedBy = "order")
+  @Column(name = "dish_id")
   private List<Dish> dishes;
   private float total;
   private Date date;

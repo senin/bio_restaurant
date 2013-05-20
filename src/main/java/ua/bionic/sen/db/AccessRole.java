@@ -1,8 +1,6 @@
 package ua.bionic.sen.db;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -12,10 +10,14 @@ import java.util.List;
 public class AccessRole {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  @ManyToMany
   private List<User> users;
+
+  private String title;
+  private String description;
 
   public AccessRole() {
   }
@@ -42,5 +44,21 @@ public class AccessRole {
         "id=" + id +
         ", users=" + users +
         '}';
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

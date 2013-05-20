@@ -1,9 +1,6 @@
 package ua.bionic.sen.db;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,15 +11,31 @@ import java.util.List;
 public class Dish {
 
   @Id
-  @GeneratedValue(strategy=GenerationType.SEQUENCE)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
   private String title;
   private int price;
-  private String[] ingredients;
-  private List<DishCategory> dishCategories;
+  private String description;
+  private boolean ready;
+
+  @ManyToOne
+  @JoinColumn(name = "dish_id")
+  private Order order;
+
+  @ManyToOne
+  @JoinColumn(name = "dish")
+  private DishCategory dishCategory;
 
   private boolean kitchenMade;
+
+  public Order getOrder() {
+    return order;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
+  }
 
   public Dish() {
   }
@@ -51,20 +64,12 @@ public class Dish {
     this.price = price;
   }
 
-  public String[] getIngredients() {
-    return ingredients;
+  public String getDescription() {
+    return description;
   }
 
-  public void setIngredients(String[] ingredients) {
-    this.ingredients = ingredients;
-  }
-
-  public List<DishCategory> getDishCategories() {
-    return dishCategories;
-  }
-
-  public void setDishCategories(List<DishCategory> dishCategories) {
-    this.dishCategories = dishCategories;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public boolean isKitchenMade() {
@@ -78,12 +83,28 @@ public class Dish {
   @Override
   public String toString() {
     return "Dish{" +
-        "id=" + id +
-        ", title='" + title + '\'' +
-        ", price=" + price +
-        ", ingredients=" + Arrays.toString(ingredients) +
-        ", dishCategories=" + dishCategories +
-        ", kitchenMade=" + kitchenMade +
-        '}';
+      "id=" + id +
+      ", title='" + title + '\'' +
+      ", price=" + price +
+      ", ready=" + ready +
+      ", dishCategory=" + dishCategory +
+      ", kitchenMade=" + kitchenMade +
+      '}';
+  }
+
+  public DishCategory getDishCategory() {
+    return dishCategory;
+  }
+
+  public void setDishCategory(DishCategory dishCategory) {
+    this.dishCategory = dishCategory;
+  }
+
+  public boolean isReady() {
+    return ready;
+  }
+
+  public void setReady(boolean ready) {
+    this.ready = ready;
   }
 }
